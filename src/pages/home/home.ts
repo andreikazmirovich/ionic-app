@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { FirebaseService } from '../../services/firebase-service';
 import { Question } from '../../models/question.model';
 
@@ -13,7 +13,6 @@ export class HomePage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    public alertCtrl: AlertController,
     private firebaseService: FirebaseService
   ) {}
 
@@ -25,15 +24,6 @@ export class HomePage implements OnInit {
       this.questions = questions;
     });
     this.firebaseService.installSettings();
-  }
-
-  private showAlert(title: string = '', subTitle: string = ''): void {
-    const alert = this.alertCtrl.create({
-      title: title,
-      subTitle: subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 
   public isQuestionNew(question: Question): boolean {
