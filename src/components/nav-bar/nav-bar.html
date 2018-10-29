@@ -1,0 +1,11 @@
+<!-- Generated template for the NavBarComponent component -->
+<div class="nav-bar" [ngClass]="{'active': isOpen}">
+  <button id="settings" (click)="goToSettings()">
+    <ion-icon name="settings"></ion-icon>
+  </button>
+  <button id="add" (click)="isOpen = !isOpen">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <input [(ngModel)]="question" (keyup)="isAnswerCorrect()" type="text" placeholder="Question">
+  <button id="send" (click)="sendQuestion()" [disabled]="isSendButtonDisabled" ion-button outline color="light">Send</button>
+</div>

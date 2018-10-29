@@ -1,14 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Questions
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <button (click)="getNewQuestions()" ion-button round color="light" class="refresh-button" [ngClass]="{'refresh-button-attention': shouldUserRefreshPage()}">
+    <ion-icon name="refresh"></ion-icon>
+  </button>
+  <div class="question-block" [ngClass]="{'new-question': isQuestionNew(question)}" *ngFor="let question of showedQuestions | OrderByDate: 'created'">
+    {{question.text}}
+  </div>
 </ion-content>
+
+<ion-footer>
+  <nav-bar></nav-bar>
+</ion-footer>
